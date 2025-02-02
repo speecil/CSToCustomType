@@ -68,7 +68,8 @@ namespace CSToCustomType
                             Name = method.Name,
                             Parameters = method.GetParameters().Select(p => $"{p.ParameterType} {p.Name}").ToList(),
                             Attributes = method.GetCustomAttributes().Select(a => a.GetType().Name).ToList(),
-                            IsOverride = isOverride
+                            IsOverride = isOverride,
+                            BaseMethodInfo = isOverride ? method.GetBaseDefinition() : null
                         });
                     }
                     catch

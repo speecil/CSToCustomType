@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,5 +15,6 @@ namespace CSToCustomType
         public List<string> Parameters { get; set; } = new List<string>();
         public List<string> Attributes { get; set; } = new List<string>();
         public bool IsOverride { get; set; } = false;
+        public MethodInfo BaseMethodInfo { get; set; }
     }
 }

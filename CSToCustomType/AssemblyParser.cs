@@ -60,13 +60,15 @@ namespace CSToCustomType
                 {
                     try
                     {
+                        bool isOverride = method.GetBaseDefinition() != method;
                         parsedType.Methods.Add(new ParsedMethod
                         {
                             Visibility = GetMethodVisibility(method),
                             ReturnType = method.ReturnType.ToString(),
                             Name = method.Name,
                             Parameters = method.GetParameters().Select(p => $"{p.ParameterType} {p.Name}").ToList(),
-                            Attributes = method.GetCustomAttributes().Select(a => a.GetType().Name).ToList()
+                            Attributes = method.GetCustomAttributes().Select(a => a.GetType().Name).ToList(),
+                            IsOverride = isOverride
                         });
                     }
                     catch
@@ -143,7 +145,7 @@ namespace CSToCustomType
                         {
                             string attributes = method.Attributes.Any() ? string.Join(", ", method.Attributes) : "None";
                             string parameters = method.Parameters.Any() ? string.Join(", ", method.Parameters) : "None";
-                            writer.WriteLine($"| `{attributes}` | `{method.Visibility}` | `{method.ReturnType}` | `{method.Name}` | `{parameters}` |");
+                            writer.WriteLine($"| `{attributes}` | `{method.Visibility + (method.IsOverride ? " override" : "")}` | `{method.ReturnType}` | `{method.Name}` | `{parameters}` |");
                         }
                     }
                     else

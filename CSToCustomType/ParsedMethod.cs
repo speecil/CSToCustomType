@@ -13,5 +13,6 @@ namespace CSToCustomType
         public string Name { get; set; }
         public List<string> Parameters { get; set; } = new List<string>();
         public List<string> Attributes { get; set; } = new List<string>();
+        public bool IsOverride { get; set; } = false;
     }
 }

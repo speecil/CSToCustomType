@@ -30,8 +30,6 @@ namespace CSToCustomType
             header.AppendLine($"#include \"lapiz/shared/macros.hpp\"");
             header.AppendLine($"#include \"custom-types/shared/macros.hpp\"");
             header.AppendLine();
-            header.AppendLine("using namespace GlobalNamespace;");
-            header.AppendLine();
             //string interfaces = "";
             //foreach (var @interface in parsedType.Interfaces)
             //{
